@@ -395,6 +395,13 @@ namespace Xceed.Wpf.Toolkit
     #endregion //Event Handlers
 
     #region Methods
+    public void UpdateValueProperty(DateTime? newValueDateTime)
+    {
+      if (newValueDateTime != null)
+      {
+        this.SetValueInternal(newValueDateTime);
+      }
+    }
 
     private void ValidateTime( TimeSpan time )
     {
