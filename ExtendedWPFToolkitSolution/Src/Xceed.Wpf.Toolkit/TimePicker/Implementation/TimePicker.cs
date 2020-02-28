@@ -371,8 +371,8 @@ namespace Xceed.Wpf.Toolkit
         {
           var currentValue = this.ConvertTextToValue( this.TextBox.Text );
           var date = currentValue ?? this.ContextNow;
-          var newValue = new DateTime( date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds, time.Milliseconds, date.Kind );
-          this.TextBox.Text = newValue.ToString( this.GetFormatString( this.Format ), this.CultureInfo );
+          Value = new DateTime( date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds, time.Milliseconds, date.Kind );
+          
         }
         else
         {
