@@ -371,8 +371,9 @@ namespace Xceed.Wpf.Toolkit
         {
           var currentValue = this.ConvertTextToValue( this.TextBox.Text );
           var date = currentValue ?? this.ContextNow;
+          var currentPart = CurrentDateTimePart == DateTimePart.Other ? DateTimePart.Minute : CurrentDateTimePart;
           Value = new DateTime( date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds, time.Milliseconds, date.Kind );
-          
+          CurrentDateTimePart = currentPart;
         }
         else
         {
