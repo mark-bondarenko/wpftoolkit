@@ -704,6 +704,7 @@ namespace Xceed.Wpf.Toolkit
 
     private void Increment( int step )
     {
+        var currentPart = CurrentDateTimePart;
       if( this.Value.HasValue )
       {
         this.Value = this.UpdateDateTime( this.Value, step );
@@ -712,6 +713,9 @@ namespace Xceed.Wpf.Toolkit
       {
         this.Value = this.DefaultValue ?? this.ContextNow;
       }
+
+      var info = GetDateTimeInfo(currentPart);
+      TextBox.Select(info.StartPosition, info.Length);
     }
 
     private void ParseValueIntoDateTimeInfo( DateTime? newDate )
