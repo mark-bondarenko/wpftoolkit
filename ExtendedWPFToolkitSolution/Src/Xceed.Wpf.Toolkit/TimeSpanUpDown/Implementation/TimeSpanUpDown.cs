@@ -261,6 +261,26 @@ namespace Xceed.Wpf.Toolkit
       base.OnValueChanged( oldValue, newValue );
     }
 
+    protected override void OnMinimumChanged(TimeSpan? oldValue, TimeSpan? newValue)
+    {
+        base.OnMinimumChanged(oldValue, newValue);
+
+        if (this.Value.HasValue && this.ClipValueToMinMax)
+        {
+            this.Value = this.CoerceValueMinMax(this.Value.Value);
+        }
+    }
+
+    protected override void OnMaximumChanged(TimeSpan? oldValue, TimeSpan? newValue)
+    {
+        base.OnMaximumChanged(oldValue, newValue);
+
+        if (this.Value.HasValue && this.ClipValueToMinMax)
+        {
+            this.Value = this.CoerceValueMinMax(this.Value.Value);
+        }
+    }
+
     protected override void PerformMouseSelection()
     {
       var value = this.UpdateValueOnEnterKey

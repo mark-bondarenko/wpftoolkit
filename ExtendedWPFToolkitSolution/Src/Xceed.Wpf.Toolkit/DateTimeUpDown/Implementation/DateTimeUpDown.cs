@@ -338,6 +338,26 @@ namespace Xceed.Wpf.Toolkit
       }
     }
 
+    protected override void OnMinimumChanged(DateTime? oldValue, DateTime? newValue)
+    {
+        if (this.Value.HasValue && this.ClipValueToMinMax)
+        {
+            this.Value = this.CoerceValueMinMax(this.Value.Value);
+        }
+
+        base.OnMinimumChanged(oldValue, newValue);
+    }
+
+    protected override void OnMaximumChanged(DateTime? oldValue, DateTime? newValue)
+    {
+        if (this.Value.HasValue && this.ClipValueToMinMax)
+        {
+            this.Value = this.CoerceValueMinMax(this.Value.Value);
+        }
+
+        base.OnMaximumChanged(oldValue, newValue);
+    }
+
     protected override bool IsCurrentValueValid()
     {
       DateTime result;
